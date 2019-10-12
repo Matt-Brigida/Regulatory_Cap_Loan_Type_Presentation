@@ -41,89 +41,90 @@
 	    <h2>The Effect of Bank Regulatory Capital Levels on Loan Types</h2>
 	    <br>
 	    <p> MATT BRIGIDA </p>
-	    <p> Associate Professor of Finance (SUNY Polytechnic Institute) & Financial Education Advisor, Milken Institute </p>
+	    <p> Associate Professor of Finance, SUNY Polytechnic Institute</p>
 	  </section>
 	</section>
 
 	<section data-markdown>
 	  <textarea data-template>
-## Quoted Rates
 
-<p align="left">Interest rates are often *quoted* as annual rates, even though the payment and interest period is actually less than a year.  For example, you might see an interest rate quoted as, "8% compounded semiannually."</p>
-
--  What this actually means is the interest rate is 4% over 6-months.  
-
--  Importantly, 8% over a year is **not** the same return as 4% over 6 months.  
+	    <p align="left"> This analysis tests whether <b class="fragment highlight-green">regulatory capital levels</b>, and whether capital measures are <b class="fragment highlight-red">risk-weighted</b>, affect the loans a banks holds.  Specifically we test for the effect on:</p>
+	    - Commerical and Industrial loans
+	    - Consumer loans
+	    - Real-Estate loans
 	  </textarea>
 	</section>
+
+	<section>
+	  
+	  <section>
+	  <h3>Literature</h3>
+	  </section>
+	  
+	  <section>
+	  <ul>
+	    <li>@dell2017bank found evidence that risk-taking by banks is decreasing in short-term interest rates, and this relationship is more pronounced for banks with high capital levels.</li>
+	  </ul>
+	  </section>
+
+	  <section>
+	  <ul>
+	    <li>@schwert2018bank found firms dependent on banks for financing tend to borrow from well-capitalized banks, and firms with access to the bond market borrow from banks with less capital.</li>
+	  </ul>
+	  </section>
+	  
+	<section>
+	  <ul>
+	    <li>@noss2016estimating found that during period of economic growth, an increase in bank capital requirements is related to a reduction in lending.</li>
+	  </ul>
+	</section>
+
+	<section>
+	  <ul>
+	    <li>@Baker_2015 showed how higher bank capital requirements can increase bank cost of capital through the low-risk anomaly. </li>
+	  </ul>
+	</section>
 	
-<section data-markdown>
-	<textarea data-template>
-	  <p align="left">Because of this distinction, the annual 8% rate is referred to as the *quoted* rate, to make it clear it is not the actual rate earned.  Quoted rates are calculated, by convention, as the rate per period multiplied by the number of periods in a year.</p>
-
-- In the above example, this is $4\% * 2 = 8\%$ where the $2$ denotes two 6 month periods.  
-	</textarea>
-</section>
-
-<section data-markdown>
-  <textarea data-template>
-    
-## Effective Annual Rates (EAR)
-
-<p align="left">We can calculate the EAR with:</p>
-<br>
-<b class="fragment highlight-green"> $EAR = \left(1 + \frac{Q}{m}\right)^m - 1$. </b>
-<br>
-<p align="left">This is the actual interest rate over a year.</p>
-  </textarea>
-</section>
-
-<section data-markdown>
-  <textarea data-template>
-    <p align="left">The idea in this equation is that we first take the quoted rate and calculate the <b class="fragment highlight-green">rate per period $\frac{Q}{m}$</b>.  This is the actual interest rate (which in the previous example was 4% over 6-months).</p>
-  </textarea>
-</section>
-
-<section data-markdown>
-  <textarea data-template>
-    <p align="left">We then calculate the future value at the end of the year, given an interest rate of $\frac{Q}{m}$ per period, and $m$ periods in a year.  You can think of this as the future value of \$1 invested over the year: 
-    <br>
-    <br>
-    $FV = PV\left(1 + r\right)^n = \$1\left(1 + \frac{Q}{m}\right)^m$.</p>
-  </textarea>
-</section>
-
-<section data-markdown>
-  <textarea data-template>
-    <p align="left">We then subtract the original \$1, to get the amount earned over the year (the EAR).</p>
-  </textarea>
-</section>
-
-<section data-markdown>
-	<textarea data-template>
-## Interactive App
-
-<p align="left">Use the following app to get an idea of how the quoted interest rate and compounding period affect the effective annual rate.</p>
-
--  Notice the greater the quoted rate, the larger the effect of increasing the compounding period.  
-	</textarea>
-</section>
-
-<!-- Inserting App -->
-<section data-background-image="./code_image.jpg">
-  <div class="stretch">
-    <iframe src="https://micfm.shinyapps.io/compounding_app1/" height="100%" width="100%"></iframe>
-  </div>
-</section>
+      </section>
 
 
 <section>
-<h3>Credits and Collaboration</h3>
+  <p align="left">Research on capital requirements is particularly timely given <span class="fragment highlight-green">proposed regulation which would set a required tier 1 leverage ratio of 9% for bank with less than $10 billion in assets</span> (Section 201 of the Economic Growth Regulatory Relief and Consumer Protection Act of 2018).</p>
+</section>
 
-<p align="left">Click the following links to see the <a href="https://github.com/FinancialMarkets/interest_compounding">code</a>, <a href="https://github.com/FinancialMarkets/interest_compounding/blame/master/index.html">authors of this presentation</a>.</p>
+<section>
+  <h3>Goal of This Analysis</h3>
+  <p align="left">In this analysis we first confirm the link between levels of regulatory capital, and the quantity of bank credit.  We then add to the understanding of this relationship by determining if capital levels have any effect on the type of bank credit offered. Lastly we add to this literature by investigating another implication of risk-weighting assets in regulatory capital measures---specifically that the risk weightings may affect the types of loans bank offer.</p>
+</section>
 
-<p align="left">If you would like to make any additions or corrections to this presentation, visit our <a href="https://github.com/FinancialMarkets/5MinuteFinance#how-to-contribute">GitHub repository page</a> to learn more about how to contribute.</p>
+<section>
+<section>
+  <h3>Two Capital Ratios</h3>
+  <ul>
+    <li>Tier 1 Leverage Ratio: Tier 1 Capital divided by Total Assets</li>
+    <li>Tier 1 Risk-Based Capital Ratio: Tier 1 Capital divided by Risk-Weighted Assets</li>
+  </ul>
+</section>
+	<section>
+	  <ul>
+	    <li>
+	      @haldane_2011 contrasted the <span class="fragment highlight-red">number of calculations</span> it takes a large bank to calculate its regulatory capital ratio under Basel I (a few) and Basel II (<span class="fragment highlight-red">approximately 200 million</span>).
+	    </li>
+	  </ul>
+	</section>
+</section>
 
+
+<!-- Inserting App -->
+<!-- <section data-background-image="./code_image.jpg"> -->
+<!--   <div class="stretch"> -->
+<!--     <iframe src="https://micfm.shinyapps.io/compounding_app1/" height="100%" width="100%"></iframe> -->
+<!--   </div> -->
+<!-- </section> -->
+
+
+<section>
+Questions/Comments?
 </section>
 
 </div>
