@@ -102,7 +102,7 @@
   <h3>Two Capital Ratios</h3>
   <ul>
     <li>Tier 1 Leverage Ratio: Tier 1 Capital divided by Total Assets</li>
-    <li>Tier 1 Risk-Based Capital Ratio: Tier 1 Capital divided by Risk-Weighted Assets</li>
+    <li>Tier 1 <span class="fragment highlight-red">Risk-Based</span> Capital Ratio: Tier 1 Capital divided by Risk-Weighted Assets</li>
   </ul>
 </section>
 	<section>
@@ -113,6 +113,184 @@
 	  </ul>
 	</section>
 </section>
+
+
+<section>
+  <section>
+    <h3>Data</h3>
+  </section>
+	<section data-markdown>
+	  <textarea data-template>
+    We use the comprehensive Reports of Condition and Income (Call Reports) banks must file.  [From the FDIC](https://cdr.ffiec.gov/public/HelpFileContainers/WelcomeAdditionalInfo.aspx):
+
+    > Every national bank, state member bank, and insured nonmember bank is required by its primary federal regulator to file a Call Report as of the close of business on the last day of each calendar quarter (the report date).
+	  </textarea>
+	</section>
+
+	<section data-markdown>
+	  <textarea data-template>
+| Code | Schedule | Variable |
+|------|----------|----------|
+| RCON2122 | RC-C  I | Total loans and leases, net of unearned income |
+| RCON1766 | RC-C  I |  Commercial and industrial loans |
+| RCONB538  | RC-C  I | Credit Card Loans |
+| RCONB539  | RC-C  I | Other Consumer Revolving Loans |
+| RCON2011  | RC-C  I | Other Consumer Loans |
+| RCONF158 | RC-C  I | One to Four Family Residential Mortgages |
+	  </textarea>
+	</section>
+
+	<section data-markdown>
+	  <textarea data-template>
+| Code | Schedule | Variable |
+|------|----------|----------|
+| RCON1797 | RC-C  I | Revolving Open-end Loan, 1-4 Res. |
+| RCON5367 | RC-C  I | First Lien Closed-end Loan, 1-4 Res. |
+| RCON5368 | RC-C  I | Second Lien Closed-end Loan, 1-4 Res. |
+| RCONF159 | RC-C  I | Other Construction Loans |
+| RCON1420 | RC-C  I | Loans for Farmland |
+| RCON1460 | RC-C  I | Multifamily Res. Loans |
+	  </textarea>
+	</section>
+	
+	<section data-markdown>
+	  <textarea data-template>
+| Code | Schedule | Variable |
+|------|----------|----------|
+| RCONF160 | RC-C  I | Owner-Occ. Nonfarm Nonres. Loans |
+| RCONF161 | RC-C  I | Other Owner-Occ. Nonfarm Nonres. Loans |
+| RIAD4340  | RI  | Net Income |
+| RCON1606 | RCN and RCN I | Nonperforming Assets: 30-89 Days Overdue |
+| RCON1607 | RCN and RCN I | Nonperforming Assets: 90+ Days Overdue |
+	  </textarea>
+	</section>
+
+		<section data-markdown>
+	  <textarea data-template>
+| Code | Schedule | Variable |
+|------|----------|----------|
+| RCON1608 | RCN and RCN I | Nonperforming Assets: Nonaccrual |
+| RCON2170 | RC | Total Assets |
+| RCON3210 | RC | Total Equity |
+| RCON2200 | RC | Total Domestic Deposits |
+| RCFA8274 | RC-R  I | Tier 1 Leverage Ratio |
+| RCOA7206 | RC-R  I | Tier 1 Risk-Based Capital Ratio |
+	  </textarea>
+	</section>
+
+			<section data-markdown>
+	  <textarea data-template>
+	    <h3>Filters</h3>
+	    -  We exclude observations where the Tier 1 Leverage Ratio or Tier 1 Risk-Based Capital Ratio is greater than 50%, or less than 0%.
+	    - We exclude any observation where the percent change in the amount of a given loan type is greater than 200%.
+	  </textarea>
+			</section>
+
+
+			<section>
+			  <iframe class="stretch" id="desc_stats" src="stats.pdf"></iframe>
+			</section>
+
+			<!-- <section data-markdown>			   -->
+<!-- 	  <textarea data-template> -->
+<!-- 	    <h3>Descriptive Statistics</h3> -->
+	    
+<!-- | Variable | N | Mean | St. Dev. | Min | Pctl 25 | Pctl 75 | Max |  -->
+<!-- |----------|------|-----|-----|-----|--------|---------|----------| -->
+<!-- | Per. Chng. Amt. Comm. | 339,815 | 0.079 | 0.309 | -0.995 | -0.092 | 0.195 | 1.999 |  -->
+<!-- | Comm. Loans / TA | 339,815 | 0.093 | 0.068 | 0.00000 | 0.047 | 0.121 | 0.863 |  -->
+<!-- | Per. Chng. Amt. Cons. | 339,815 | -0.045 | 0.339 | -1.000 | -0.155 | 0.072 | 1.997 |  -->
+<!-- | Comm. Loans / TA | 339,815 | 0.041 | 0.052 | 0.00000 | 0.005 | 0.058 | 1.135 |  -->
+<!-- | Per. Chng. RE | 339,815 | 0.119 | 0.294 | -1.000 | -0.023 | 0.157 | 2.000 |  -->
+<!-- | RE Loans / TA | 339,815 | 0.337 | 0.186 | 0.00000 | 0.190 | 0.473 | 4.606 |  -->
+<!-- | T1 Leverage Rat. | 339,815 | 0.102 | 0.031 | 0.001 | 0.082 | 0.112 | 0.497 |  -->
+<!-- | T1 Risk-Based Cap. Rat. | 339,815 | 0.153 | 0.062 | 0.001 | 0.111 | 0.174 | 0.500 |  -->
+<!-- | Total Equity | 339,815 | 0.105 | 0.032 | -0.010 | 0.085 | 0.118 | 0.495 |  -->
+<!-- | ROA | 339,815 | 0.005 | 0.008 | -0.296 | 0.002 | 0.009 | 0.295 |  -->
+<!-- | Non-Perf. Assets | 339,815 | 0.003 | 0.005 | 0.000 | 0.0002 | 0.003 | 0.171 |  -->
+<!-- | Total Assets | 339,815 | 442,021.100 | 1,931,462.000 | 2,298 | 65,639 | 307,772 | 163,066,000 |  -->
+<!-- | Total Deposits | 339,815 | 0.833 | 0.071 | 0.0001 | 0.802 | 0.882 | 0.993 |  -->
+<!-- | De Novo Ind. | 339,815 | 0.033 | 0.178 | 0 | 0 | 0 | 1 |  -->
+<!-- | Post Crisis Ind | 339,815 | 0.173 | 0.378 | 0 | 0 | 0 | 1 |  -->
+<!-- | Fin. Crisis Ind | 339,815 | 0.202 | 0.402 | 0 | 0 | 0 | 1 | -->
+<!-- 	  </textarea> -->
+<!-- 				</section> -->
+	    
+</section>
+
+
+<section>
+  <section>
+    <h3>Method</h3>
+  </section>
+
+  	<section data-markdown>
+	  <textarea data-template>
+
+	    <p align="left">We use a fixed-effects (bank fixed effects) panel data model with the following specification, which is based on @cole2012did:</p>
+
+<span class="fragment highlight-blue">$$\%\Delta L_i=\beta_0+\beta_1OCR_i+\beta_2TE_i+\Gamma Con_i+\mu_i$$</span>
+
+	    <p align="left">Where $\%\Delta L_i$ is the percent change in a particular loan type for firm *i* over the last year ending in quarter *t*.  The loans types are Commercial and Industrial, Consumer, and Real-Estate.</p>
+	  </textarea>
+	</section>
+
+		<section data-markdown>
+	  <textarea data-template>
+	    <p align="left">Each capital ratio is <span class="fragment highlight-green">orthogonalized</span> with respect to Total Equity, so it contains information in the ratio which is unrelated to the information contained in Total Equity.</p>
+
+	    <p align="left">**Controls** denotes a matrix of the following control variables:  Return on Assets (*ROA*); Non-Performing Assets divided by Total Assets (*NPA*); natural log of Total Assets (*ln(TA)*); Total Deposits divided by Total Assets (*Deposits*); *Post Crisis* is an indicator for the years 2012--2015; *Fin Crisis* is an indicator for the years 2009-2011; *De Novo* denotes a bank which is less than 5 years old.</p>
+	  </textarea>
+		</section>
+
+			<section data-markdown>
+	  <textarea data-template>
+	    <p align="left">Note that the explanatory variables are <span class="fragment highlight-blue">lagged one year</span> with respect to the percent change in loans. So our equation tests for the effect of the capital ratio in quarter t, with the percent change in loans over the following 4 quarters.</p>
+	  </textarea>
+	</section>
+  
+</section>
+
+<section>
+  <section>
+  <h3>Results</h3>
+  </section>
+
+  <section>
+    <p align="left">Because capital ratios are nonlinearly related to bank health---both very low and very high capital ratios indicate poor financial performance---we also conduct our analysis on subsets of <b class="fragment highlight-green">well</b> and <b class="fragment highlight-red">poorly</b> capitalized banks.</p>
+</section>
+
+			<section>
+			  <iframe class="stretch" id="res" src="results.pdf"></iframe>
+			</section>
+</section>
+
+<section>
+  <section>
+  <h3>Conclusion</h3>
+  </section>
+
+  	<section data-markdown>
+	  <textarea data-template>
+	    -  <span class="fragment highlight-green">Significant relationships between regulatory capital levels and subsequent lending over the following year.</span>  The signs of these relationships, however, were contingent on the measure of capital, type of loan, and whether the banks was well or poorly capitalized.
+	  </textarea>
+	</section>
+	
+	<section data-markdown>
+	  <textarea data-template>
+	    - When considering the <span class="fragment highlight-green">non-risk-weighted Tier 1 Leverage Ratio, higher capital levels lead to greater percent changes in all types of loans</span> over the following year.  This is broadly true across both well and poorly capitalized banks.
+	  </textarea>
+	</section>
+	
+	<section data-markdown>
+	  <textarea data-template>
+	    - <span class="fragment highlight-green">Higher Risk-Based Capital Ratios</span> shifts lending <span class="fragment highlight-red">away from real-estate and consumer loans</span>, and <span class="fragment highlight-green">toward commercial and industrial loans</span>.
+	  </textarea>
+	</section>
+
+
+  </section>
+
 
 
 <!-- Inserting App -->
